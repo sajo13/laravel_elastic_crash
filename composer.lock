@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "80f00bb982493d42a32591045f2cd0d6",
+    "content-hash": "90a55bd8c11a571f6a1c89fe1b66e029",
     "packages": [
         {
             "name": "brick/math",
@@ -2185,30 +2185,30 @@
         },
         {
             "name": "mailerlite/laravel-elasticsearch",
-            "version": "11.1.1",
+            "version": "11.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mailerlite/laravel-elasticsearch.git",
-                "reference": "eba15222466e9f55a80f7dfdeafa2c99ae53358b"
+                "reference": "2791e8012d1bfbb8c65973dc7a222440be7a183b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mailerlite/laravel-elasticsearch/zipball/eba15222466e9f55a80f7dfdeafa2c99ae53358b",
-                "reference": "eba15222466e9f55a80f7dfdeafa2c99ae53358b",
+                "url": "https://api.github.com/repos/mailerlite/laravel-elasticsearch/zipball/2791e8012d1bfbb8c65973dc7a222440be7a183b",
+                "reference": "2791e8012d1bfbb8c65973dc7a222440be7a183b",
                 "shasum": ""
             },
             "require": {
                 "elasticsearch/elasticsearch": "^7.11",
                 "ext-json": "*",
                 "guzzlehttp/psr7": "^1.7|^2.0",
-                "illuminate/contracts": "^7.0|^8.0|^9.0|^10.0|^11.0",
-                "illuminate/support": "^7.0|^8.0|^9.0|^10.0|^11.0",
+                "illuminate/contracts": "^7.0|^8.0|^9.0|^10.0|^11.0|^12.0",
+                "illuminate/support": "^7.0|^8.0|^9.0|^10.0|^11.0|^12.0",
                 "php": "^7.3|^8.0",
                 "psr/http-message": "^1.0|^2.0"
             },
             "require-dev": {
                 "mockery/mockery": "^1.4.3",
-                "orchestra/testbench": "^6.45|^7.44|^8.25|^9.3",
+                "orchestra/testbench": "^6.45|^7.44|^8.25|^9.3|^10.0",
                 "phpunit/phpunit": "^9.4"
             },
             "suggest": {
@@ -2250,7 +2250,7 @@
             ],
             "support": {
                 "issues": "https://github.com/mailerlite/laravel-elasticsearch/issues",
-                "source": "https://github.com/mailerlite/laravel-elasticsearch/tree/11.1.1"
+                "source": "https://github.com/mailerlite/laravel-elasticsearch/tree/11.2.0"
             },
             "funding": [
                 {
@@ -2258,7 +2258,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-15T04:54:47+00:00"
+            "time": "2025-02-24T13:53:16+00:00"
         },
         {
             "name": "monolog/monolog",
