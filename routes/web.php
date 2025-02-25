@@ -38,18 +38,30 @@ Route::get('/', function () {
     // $results = Elasticsearch::search($params);
 
 
+    // $params = [
+    //     'index' => 'my_index',
+    //     'id'    => 'my_id',
+    //     'body'  => [
+    //         'doc' => [
+    //             'testField' => 'abc1236'
+    //         ]
+    //     ]
+    // ];
+    
+    // // Update doc at /my_index/_doc/my_id
+    // $results = Elasticsearch::update($params);
+    // dd($results);
+
+
     $params = [
         'index' => 'my_index',
-        'id'    => 'my_id',
-        'body'  => [
-            'doc' => [
-                'testField' => 'abc1236'
-            ]
-        ]
+        'id'    => 'my_id'
     ];
     
-    // Update doc at /my_index/_doc/my_id
-    $results = Elasticsearch::update($params);
-    dd($results);
+    // Delete doc at /my_index/_doc_/my_id
+    $response = Elasticsearch::delete($params);
+    dd($response);
+
+    
     // return view('welcome');
 });
