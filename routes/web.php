@@ -25,17 +25,31 @@ Route::get('/', function () {
     // dd($return['_source']);
 
 
+    // $params = [
+    //     'index' => 'my_index',
+    //     'body'  => [
+    //         'query' => [
+    //             'match' => [
+    //                 'testField' => 'abc'
+    //             ]
+    //         ]
+    //     ]
+    // ];
+    // $results = Elasticsearch::search($params);
+
+
     $params = [
         'index' => 'my_index',
+        'id'    => 'my_id',
         'body'  => [
-            'query' => [
-                'match' => [
-                    'testField' => 'abc'
-                ]
+            'doc' => [
+                'testField' => 'abc1236'
             ]
         ]
     ];
-    $results = Elasticsearch::search($params);
+    
+    // Update doc at /my_index/_doc/my_id
+    $results = Elasticsearch::update($params);
     dd($results);
     // return view('welcome');
 });
