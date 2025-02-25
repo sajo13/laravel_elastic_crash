@@ -53,15 +53,17 @@ Route::get('/', function () {
     // dd($results);
 
 
-    $params = [
-        'index' => 'my_index',
-        'id'    => 'my_id'
-    ];
+    // $params = [
+    //     'index' => 'my_index',
+    //     'id'    => 'my_id'
+    // ];
     
-    // Delete doc at /my_index/_doc_/my_id
-    $response = Elasticsearch::delete($params);
-    dd($response);
+    // // Delete doc at /my_index/_doc_/my_id
+    // $response = Elasticsearch::delete($params);
+    // dd($response);
 
+    $params = ['index' => 'my_index'];
+    $response = Elasticsearch::indices()->delete($params);
     
     // return view('welcome');
 });
