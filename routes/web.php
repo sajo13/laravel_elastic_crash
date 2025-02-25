@@ -15,14 +15,27 @@ Route::get('/', function () {
     
     // $return = Elasticsearch::index($data);
 
+    // $params = [
+    //     'index' => 'my_index',
+    //     'id'    => 'my_id'
+    // ];
+
+    // // Get doc at /my_index/_doc/my_id
+    // $return = Elasticsearch::get($params);
+    // dd($return['_source']);
+
+
     $params = [
         'index' => 'my_index',
-        'id'    => 'my_id'
+        'body'  => [
+            'query' => [
+                'match' => [
+                    'testField' => 'abc'
+                ]
+            ]
+        ]
     ];
-
-    // Get doc at /my_index/_doc/my_id
-    $return = Elasticsearch::get($params);
-    dd($return['_source']);
-
+    $results = Elasticsearch::search($params);
+    dd($results);
     // return view('welcome');
 });
