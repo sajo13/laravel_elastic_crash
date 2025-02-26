@@ -65,13 +65,25 @@ Route::get('/', function () {
     // $params = ['index' => 'my_index'];
     // $response = Elasticsearch::indices()->delete($params);
     
+    // $params = [
+    //     'index' => 'my_index',
+    //     'id'    => 'my_id',
+    //     'body'  => '{"testField" : "abc"}'
+    // ];
+    
+    // $response = Elasticsearch::index($params);
+
     $params = [
-        'index' => 'my_index',
-        'id'    => 'my_id',
-        'body'  => '{"testField" : "abc"}'
+        'index' => 'my_index2',
+        'body' => [
+            'settings' => [
+                'number_of_shards' => 2,
+                'number_of_replicas' => 0
+            ]
+        ]
     ];
     
-    $response = Elasticsearch::index($params);
+    $response = Elasticsearch::indices()->create($params);
     dd($response);
     // return view('welcome');
 });
