@@ -112,15 +112,30 @@ Route::get('/', function () {
     // $response = Elasticsearch::search($params);
 
     // Simple search Query
+    // $params = [
+    //     'index' => 'my_index',
+    //     'body'  => [
+    //         'query' => [
+    //             'match' => [
+    //                 'testField' => 'abc'
+    //             ]
+    //         ]
+    //     ]
+    // ];
+    
+    // $response = Elasticsearch::search($params);
+
+    $json = '{
+        "query" : {
+            "match" : {
+                "testField" : "abc"
+            }
+        }
+    }';
+    
     $params = [
         'index' => 'my_index',
-        'body'  => [
-            'query' => [
-                'match' => [
-                    'testField' => 'abc'
-                ]
-            ]
-        ]
+        'body'  => $json
     ];
     
     $response = Elasticsearch::search($params);
