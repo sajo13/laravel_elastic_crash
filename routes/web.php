@@ -140,24 +140,41 @@ Route::get('/', function () {
     
     // $response = Elasticsearch::search($params);
 
+    // $params = [
+    //     'index' => 'my_index',
+    //     'body'  => [
+    //         'query' => [
+    //             'match' => [
+    //                 'testField' => 'abc'
+    //             ]
+    //         ]
+    //     ]
+    // ];
+    
+    // $response = Elasticsearch::search($params);
+    
+    // $milliseconds = $response['took'];
+    // $maxScore     = $response['hits']['max_score'];
+    
+    // $score = $response['hits']['hits'][0]['_score'];
+    // $doc   = $response['hits']['hits'][0]['_source'];
+    // dd($doc);
+
     $params = [
         'index' => 'my_index',
         'body'  => [
             'query' => [
-                'match' => [
-                    'testField' => 'abc'
+                'bool' => [
+                    'should' => [
+                        [ 'term' => [ 'testField' => 'abc' ] ],
+                        [ 'term' => [ 'testField2' => 'xyz' ] ],
+                    ]
                 ]
             ]
         ]
     ];
-    
-    $response = Elasticsearch::search($params);
-    
-    $milliseconds = $response['took'];
-    $maxScore     = $response['hits']['max_score'];
-    
-    $score = $response['hits']['hits'][0]['_score'];
-    $doc   = $response['hits']['hits'][0]['_source'];
-    dd($doc);
+
+    $result = Elasticsearch::search($params);
+    dd($result);
     // return view('welcome');
 });
