@@ -73,17 +73,43 @@ Route::get('/', function () {
     
     // $response = Elasticsearch::index($params);
 
+    // $params = [
+    //     'index' => 'my_index2',
+    //     'body' => [
+    //         'settings' => [
+    //             'number_of_shards' => 2,
+    //             'number_of_replicas' => 0
+    //         ]
+    //     ]
+    // ];
+    
+    // $response = Elasticsearch::indices()->create($params);
+
     $params = [
-        'index' => 'my_index2',
+        'index' => 'your_index',
+        'id' => '1',             
         'body' => [
-            'settings' => [
-                'number_of_shards' => 2,
-                'number_of_replicas' => 0
-            ]
+            'content' => 'quick brown fox',
+            'time' => '2025-02-26T12:00:00',   
+            'popularity' => 1000   
         ]
     ];
     
-    $response = Elasticsearch::indices()->create($params);
+    // Index the document
+    $response = Elasticsearch::index($params);
+
+    $params['body'] = [
+        'query' => [
+            'match' => [
+                'content' => 'quick brown fox'
+            ]
+        ],
+        'sort' => [
+            ['time' => ['order' => 'desc']],
+            ['popularity' => ['order' => 'desc']]
+        ]
+    ];
+    $response = Elasticsearch::search($params);
     dd($response);
     // return view('welcome');
 });
