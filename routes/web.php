@@ -62,8 +62,16 @@ Route::get('/', function () {
     // $response = Elasticsearch::delete($params);
     // dd($response);
 
-    $params = ['index' => 'my_index'];
-    $response = Elasticsearch::indices()->delete($params);
+    // $params = ['index' => 'my_index'];
+    // $response = Elasticsearch::indices()->delete($params);
     
+    $params = [
+        'index' => 'my_index',
+        'id'    => 'my_id',
+        'body'  => '{"testField" : "abc"}'
+    ];
+    
+    $response = Elasticsearch::index($params);
+    dd($response);
     // return view('welcome');
 });
