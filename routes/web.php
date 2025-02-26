@@ -85,30 +85,44 @@ Route::get('/', function () {
     
     // $response = Elasticsearch::indices()->create($params);
 
+    // $params = [
+    //     'index' => 'your_index',
+    //     'id' => '1',             
+    //     'body' => [
+    //         'content' => 'quick brown fox',
+    //         'time' => '2025-02-26T12:00:00',   
+    //         'popularity' => 1000   
+    //     ]
+    // ];
+    
+    // // Index the document
+    // $response = Elasticsearch::index($params);
+
+    // $params['body'] = [
+    //     'query' => [
+    //         'match' => [
+    //             'content' => 'quick brown fox'
+    //         ]
+    //     ],
+    //     'sort' => [
+    //         ['time' => ['order' => 'desc']],
+    //         ['popularity' => ['order' => 'desc']]
+    //     ]
+    // ];
+    // $response = Elasticsearch::search($params);
+
+    // Simple search Query
     $params = [
-        'index' => 'your_index',
-        'id' => '1',             
-        'body' => [
-            'content' => 'quick brown fox',
-            'time' => '2025-02-26T12:00:00',   
-            'popularity' => 1000   
+        'index' => 'my_index',
+        'body'  => [
+            'query' => [
+                'match' => [
+                    'testField' => 'abc'
+                ]
+            ]
         ]
     ];
     
-    // Index the document
-    $response = Elasticsearch::index($params);
-
-    $params['body'] = [
-        'query' => [
-            'match' => [
-                'content' => 'quick brown fox'
-            ]
-        ],
-        'sort' => [
-            ['time' => ['order' => 'desc']],
-            ['popularity' => ['order' => 'desc']]
-        ]
-    ];
     $response = Elasticsearch::search($params);
     dd($response);
     // return view('welcome');
