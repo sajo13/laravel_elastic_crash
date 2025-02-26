@@ -160,14 +160,29 @@ Route::get('/', function () {
     // $doc   = $response['hits']['hits'][0]['_source'];
     // dd($doc);
 
+    // $params = [
+    //     'index' => 'my_index',
+    //     'body'  => [
+    //         'query' => [
+    //             'bool' => [
+    //                 'should' => [
+    //                     [ 'term' => [ 'testField' => 'abc' ] ],
+    //                     [ 'term' => [ 'testField2' => 'xyz' ] ],
+    //                 ]
+    //             ]
+    //         ]
+    //     ]
+    // ];
+
+    // $result = Elasticsearch::search($params);
+
     $params = [
         'index' => 'my_index',
         'body'  => [
             'query' => [
                 'bool' => [
-                    'should' => [
+                    'must' => [
                         [ 'term' => [ 'testField' => 'abc' ] ],
-                        [ 'term' => [ 'testField2' => 'xyz' ] ],
                     ]
                 ]
             ]
