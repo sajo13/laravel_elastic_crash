@@ -176,19 +176,39 @@ Route::get('/', function () {
 
     // $result = Elasticsearch::search($params);
 
+    // $params = [
+    //     'index' => 'my_index',
+    //     'body'  => [
+    //         'query' => [
+    //             'bool' => [
+    //                 'must' => [
+    //                     [ 'term' => [ 'testField' => 'abc' ] ],
+    //                 ]
+    //             ]
+    //         ]
+    //     ]
+    // ];
+
+    // $result = Elasticsearch::search($params);
+
+    //SO when filter and should are combined.
+    //The result based on filter , should is optional condition.
+    
     $params = [
         'index' => 'my_index',
         'body'  => [
             'query' => [
                 'bool' => [
-                    'must' => [
-                        [ 'term' => [ 'testField' => 'abc' ] ],
+                    'filter' => [
+                        'term' => [ 'my_field' => 'abc' ]
+                    ],
+                    'should' => [
+                        'match' => [ 'my_other_field' => 'xyz' ]
                     ]
                 ]
             ]
         ]
     ];
-
     $result = Elasticsearch::search($params);
     dd($result);
     // return view('welcome');
