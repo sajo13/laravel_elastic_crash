@@ -125,20 +125,39 @@ Route::get('/', function () {
     
     // $response = Elasticsearch::search($params);
 
-    $json = '{
-        "query" : {
-            "match" : {
-                "testField" : "abc"
-            }
-        }
-    }';
+    // $json = '{
+    //     "query" : {
+    //         "match" : {
+    //             "testField" : "abc"
+    //         }
+    //     }
+    // }';
     
+    // $params = [
+    //     'index' => 'my_index',
+    //     'body'  => $json
+    // ];
+    
+    // $response = Elasticsearch::search($params);
+
     $params = [
         'index' => 'my_index',
-        'body'  => $json
+        'body'  => [
+            'query' => [
+                'match' => [
+                    'testField' => 'abc'
+                ]
+            ]
+        ]
     ];
     
     $response = Elasticsearch::search($params);
-    dd($response);
+    
+    $milliseconds = $response['took'];
+    $maxScore     = $response['hits']['max_score'];
+    
+    $score = $response['hits']['hits'][0]['_score'];
+    $doc   = $response['hits']['hits'][0]['_source'];
+    dd($doc);
     // return view('welcome');
 });
