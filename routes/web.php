@@ -318,3 +318,19 @@ Route::get('/search-with-ids', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/search-with-terms', function () {
+    $params = [
+        'index'  => 'books',
+        'body'   => [
+            'query' => [
+                'terms' => [
+                    "author" =>  ["joshua", "joseph"]
+                ]
+            ]
+        ]
+    ];
+
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
