@@ -302,3 +302,19 @@ Route::get('/search-with-match', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/search-with-ids', function () {
+    $params = [
+        'index'  => 'books',
+        'body'   => [
+            'query' => [
+                'ids' => [
+                    "values" => [1,2]
+                ]
+            ]
+        ]
+    ];
+
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
