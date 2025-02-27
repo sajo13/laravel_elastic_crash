@@ -334,3 +334,20 @@ Route::get('/search-with-terms', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/search-with-range', function () {
+    $params = [
+        'index'  => 'books',
+        "_source" => "amazon_rating", 
+        'body'   => [
+            'query' => [
+                'range' => [
+                    "amazon_rating" =>  ["gte" => 4.5, "lte" => 5]
+                ]
+            ]
+        ]
+    ];
+
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
