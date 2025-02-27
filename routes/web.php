@@ -215,7 +215,6 @@ Route::get('/', function () {
 });
 
 Route::get('/search-with-scroll', function () {
-
     $params = [
         'scroll' => '30s',
         'size'   => 50,
@@ -240,4 +239,16 @@ Route::get('/search-with-scroll', function () {
             ]
         ]);
     }
+});
+
+Route::get('/index-with-routing-parameter', function () {
+    $params = [
+        'index'     => 'my_index',
+        'id'        => 'my_id2',
+        'routing'   => 'company_xyz',
+        'body'      => [ 'testField2' => 'abc2']
+    ];
+
+    $resp = Elasticsearch::index($params);
+    dd($resp);
 });
