@@ -286,3 +286,19 @@ Route::get('/bulk-index-with-batches', function () {
         $responses = Elasticsearch::bulk($params);
     }
 });
+
+Route::get('/search-with-match', function () {
+    $params = [
+        'index'  => 'books',
+        'body'   => [
+            'query' => [
+                'match' => [
+                    "author" => "Joshua"
+                ]
+            ]
+        ]
+    ];
+
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
