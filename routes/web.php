@@ -213,3 +213,31 @@ Route::get('/', function () {
     dd($result);
     // return view('welcome');
 });
+
+Route::get('/search-with-scroll', function () {
+
+    $params = [
+        'scroll' => '30s',
+        'size'   => 50,
+        'index'  => 'my_index',
+        'body'   => [
+            'query' => [
+                'match_all' => new \stdClass()
+            ]
+        ]
+    ];
+
+    $response = Elasticsearch::search($params);
+
+    // dd($response);
+    while (isset($response['hits']['hits']) && count($response['hits']['hits']) > 0) {
+        $scroll_id = $response['_scroll_id'];
+
+        $response = Elasticsearch::scroll([
+            'body' => [
+                'scroll_id' => $scroll_id,
+                'scroll' => '30s'
+            ]
+        ]);
+    }
+});
