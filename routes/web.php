@@ -351,3 +351,22 @@ Route::get('/search-with-range', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/search-with-prefix', function () {
+    $params = [
+        'index'  => 'books',
+        "_source" => "title", 
+        'body'   => [
+            'query' => [
+                'prefix' => [
+                    "title" =>  [
+                        "value" => "con"
+                    ]
+                ]
+            ]
+        ]
+    ];
+
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
