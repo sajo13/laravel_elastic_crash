@@ -252,3 +252,37 @@ Route::get('/index-with-routing-parameter', function () {
     $resp = Elasticsearch::index($params);
     dd($resp);
 });
+
+Route::get('/bulk-index-with-batches', function () {
+    $params = ['body' => []];
+
+    for ($i = 1; $i <= 1000; $i++) {
+        $params['body'][] = [
+            'index' => [
+                '_index' => 'my_index',
+                '_id'    => $i
+            ]
+        ];
+    
+        $params['body'][] = [
+            'my_field'     => 'my_value',
+            'second_field' => 'some more values'
+        ];    
+
+        // Every 1000 documents stop and send the bulk request
+        if ($i % 1000 == 0) {
+            $responses = Elasticsearch::bulk($params);
+
+            // erase the old bulk request
+            $params = ['body' => []];
+
+            // unset the bulk response when you are done to save memory
+            unset($responses);
+        }
+    }
+
+    // Send the last batch if it exists
+    if (!empty($params['body'])) {
+        $responses = Elasticsearch::bulk($params);
+    }
+});
