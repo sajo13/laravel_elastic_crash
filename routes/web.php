@@ -370,3 +370,27 @@ Route::get('/search-with-prefix', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/search-with-highlight', function () {
+    $params = [
+        'index' => 'books',
+        'body' => [
+            '_source' => false,
+            'query' => [
+                'wildcard' => [
+                    'title' => [
+                        'value' => '*st'
+                    ]
+                ]
+            ],
+            'highlight' => [
+                'fields' => [
+                    'title' => new stdClass()
+                ]
+            ]
+        ]
+    ];
+
+    $response = Elasticsearch::search($params);
+    dump($response);
+});
