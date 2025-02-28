@@ -122,3 +122,29 @@ Route::get('/Boolean-with-must-query', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/Boolean-with-must-not-query', function () {
+    $params = [
+        'index' => 'books',
+        'body' => [
+            'query' => [
+                'bool' => [
+                    'must'  => [
+                        'match' => [
+                            'author' => 'Joshua'
+                        ]
+                    ],
+                    'must_not'  => [
+                        'range' => [
+                            'amazon_rating' => [
+                                'lt' => 4.5
+                            ]
+                        ]
+                    ],
+                ]
+            ]
+        ]
+    ];
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
