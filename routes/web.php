@@ -97,3 +97,28 @@ Route::get('/match-with-multi-fields', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/Boolean-with-must-query', function () {
+    $params = [
+        'index' => 'books',
+        'body' => [
+            '_source' => false,
+            'query' => [
+                'bool' => [
+                    'must'  => [
+                        'match' => [
+                            'tags' => 'computer'
+                        ]
+                    ]
+                ]
+            ],
+                'highlight' => [
+                'fields' => [
+                    'tags' => new stdClass()
+                ]
+            ]
+        ]
+    ];
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
