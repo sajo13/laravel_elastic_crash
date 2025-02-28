@@ -74,3 +74,26 @@ Route::get('/match-with-operator', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/match-with-multi-fields', function () {
+    $params = [
+        'index' => 'books',
+        'body' => [
+            '_source' => false,
+            'query' => [
+                'multi_match' => [
+                    'query'  => 'Java',
+                    'fields' => ['tags', 'synopsis']
+                ]
+            ],
+                'highlight' => [
+                'fields' => [
+                    'tags' => new stdClass(),
+                    'synopsis' => new stdClass()
+                ]
+            ]
+        ]
+    ];
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
