@@ -50,3 +50,27 @@ Route::get('/match-with-tags', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/match-with-operator', function () {
+    $params = [
+        'index' => 'books',
+        'body' => [
+            '_source' => false,
+            'query' => [
+                'match' => [
+                    'tags' => [
+                        'query' => 'Design Pattern Programming',
+                        'operator' =>  "AND"
+                    ] 
+                ]
+            ],
+                'highlight' => [
+                'fields' => [
+                    'tags' => new stdClass()
+                ]
+            ]
+        ]
+    ];
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
