@@ -148,3 +148,38 @@ Route::get('/Boolean-with-must-not-query', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/Boolean-with-should-query', function () {
+    $params = [
+        'index' => 'books',
+        'body' => [
+            '_source' => false,
+            'query' => [
+                'bool' => [
+                    'should'  => [
+                        [
+                            'match' => [
+                                'title' => 'Elasticsearch'
+                            ]
+                        ],
+                        [
+                            'term' => [
+                                'author' => [
+                                    'value' => 'joshua'
+                                ]
+                            ]
+                        ]
+                    ],
+                ]
+            ],
+                'highlight' => [
+                'fields' => [
+                    'title' => new stdClass(),
+                    'author' => new stdClass()
+                ]
+            ]
+        ]
+    ];
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
