@@ -394,3 +394,28 @@ Route::get('/search-with-highlight', function () {
     $response = Elasticsearch::search($params);
     dump($response);
 });
+
+Route::get('/fuzzy-search', function () {
+    $params = [
+        'index' => 'books',
+        'body' => [
+            '_source' => false,
+            'query' => [
+                'fuzzy' => [
+                    'title' => [
+                        'value' => 'kaava',
+                        'fuzziness' => 2
+                    ]
+                ]
+            ],
+            'highlight' => [
+                'fields' => [
+                    'title' => new stdClass()
+                ]
+            ]
+        ]
+    ];
+
+    $response = Elasticsearch::search($params);
+    dump($response);
+});
