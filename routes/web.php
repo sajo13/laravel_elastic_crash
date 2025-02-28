@@ -183,3 +183,29 @@ Route::get('/Boolean-with-should-query', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/Boolean-with-filter-query', function () {
+    $params = [
+        'index' => 'books',
+        'body' => [
+            'query' => [
+                'bool' => [
+                    'filter'  => [
+                        [
+                            'term' => [
+                                'edition' => '3'
+                            ]
+                        ],
+                        [
+                            'match' => [
+                                'author' => 'Joshua'
+                            ]
+                        ]
+                    ],
+                ]
+            ]
+        ]
+    ];
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
