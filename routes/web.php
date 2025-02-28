@@ -28,3 +28,25 @@ Route::get('/match-all-boost', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+#Match query - matches all books with given tags
+Route::get('/match-with-tags', function () {
+    $params = [
+        'index' => 'books',
+        'body' => [
+            '_source' => false,
+            'query' => [
+                'match' => [
+                    'tags' => 'Java programming'
+                ]
+            ],
+                'highlight' => [
+                'fields' => [
+                    'tags' => new stdClass()
+                ]
+            ]
+        ]
+    ];
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
