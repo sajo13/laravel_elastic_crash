@@ -37,3 +37,20 @@ Route::get('/aggregation-sum', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/aggregation-min', function () {
+    $params = [
+        'index' => 'covid',
+        'body' => [
+            'aggs' => [
+                'min_cases' => [
+                    'min' => [
+                        'field' => 'cases'
+                    ]
+                ]
+            ]
+        ]
+    ];
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
