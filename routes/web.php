@@ -105,3 +105,20 @@ Route::get('/aggregation-extended-stats', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/aggregation-cardinality', function () {
+    $params = [
+        'index' => 'covid',
+        'body' => [
+            'aggs' => [
+                'date' => [
+                    'cardinality' => [
+                        'field' => 'date'
+                    ]
+                ]
+            ]
+        ]
+    ];
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
