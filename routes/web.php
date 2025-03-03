@@ -54,3 +54,20 @@ Route::get('/aggregation-min', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/aggregation-max', function () {
+    $params = [
+        'index' => 'covid',
+        'body' => [
+            'aggs' => [
+                'max_critical' => [
+                    'max' => [
+                        'field' => 'critical'
+                    ]
+                ]
+            ]
+        ]
+    ];
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
