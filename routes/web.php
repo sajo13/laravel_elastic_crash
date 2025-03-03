@@ -19,3 +19,21 @@ Route::get('/aggregation-average', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+
+Route::get('/aggregation-sum', function () {
+    $params = [
+        'index' => 'covid',
+        'body' => [
+            'aggs' => [
+                'all_deaths' => [
+                    'sum' => [
+                        'field' => 'deaths'
+                    ]
+                ]
+            ]
+        ]
+    ];
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
