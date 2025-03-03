@@ -175,3 +175,27 @@ Route::get('/aggregation-bucket', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/aggregation-range-bucket', function () {
+    $params = [
+        'index' => 'covid',
+        'body' => [
+            'aggs' => [
+                'range' => [
+                    'range' => [
+                        "field" => 'deaths',
+                        'ranges' => [
+                            ['from' => 0, 'to' => 50000],
+                            ['from' => 50000, 'to' => 100000],
+                            ['from' => 100000, 'to' => 200000],
+                            ['from' => 200000, 'to' => 400000]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ];
+
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
