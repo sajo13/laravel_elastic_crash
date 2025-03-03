@@ -122,3 +122,36 @@ Route::get('/aggregation-cardinality', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/aggregation-death-asc', function () {
+    $params = [
+        'index' => 'covid',
+        'body' => [
+            'aggs' => [
+                'mytophits' => [
+                    'terms' => [
+                        'field' => 'deaths',
+                        'size' => 10
+                    ],
+                    'aggs' => [
+                        'tops' => [
+                            'top_hits' => [
+                                'sort' => [
+                                    [
+                                        'deaths' => 'asc'
+                                    ]
+                                ],
+                                '_source' => [
+                                    'includes' => 'country'
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ];
+
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
