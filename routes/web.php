@@ -155,3 +155,23 @@ Route::get('/aggregation-death-asc', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/aggregation-bucket', function () {
+    $params = [
+        'index' => 'covid',
+        'body' => [
+            'aggs' => [
+                'bucket' => [
+                    'histogram' => [
+                        'field' => 'deaths',
+                        'interval' => 50000,
+                        'min_doc_count' => 1
+                    ]
+                ]
+            ]
+        ]
+    ];
+
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
