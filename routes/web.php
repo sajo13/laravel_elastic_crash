@@ -71,3 +71,20 @@ Route::get('/aggregation-max', function () {
     $resp = Elasticsearch::search($params);
     dump($resp);
 });
+
+Route::get('/aggregation-stats', function () {
+    $params = [
+        'index' => 'covid',
+        'body' => [
+            'aggs' => [
+                'all_stats' => [
+                    'stats' => [
+                        'field' => 'deaths'
+                    ]
+                ]
+            ]
+        ]
+    ];
+    $resp = Elasticsearch::search($params);
+    dump($resp);
+});
