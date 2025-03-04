@@ -12,6 +12,7 @@
         "php": "^8.2",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
+        "maclof/kubernetes-client": "^0.31.0",
         "mailerlite/laravel-elasticsearch": "^11.2"
     },
     "require-dev": {
