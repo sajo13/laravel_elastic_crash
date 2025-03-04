@@ -14,5 +14,11 @@ Route::get('/client-connect', function() {
         'token' => env('token')
     ], null, $httpClient);
 
-    dump($client);
+    // dump($client);
+
+    $pods = $client->pods()->setLabelSelector([
+        'name'    => 'test',
+        'version' => 'a',
+    ])->find();
+    dump($pods);
 });
