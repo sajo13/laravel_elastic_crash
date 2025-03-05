@@ -38,6 +38,11 @@ Route::get('/client-connect', function() {
     $pods = $client->nodes()->setFieldSelector([
         'metadata.name' => 'test',
     ])->find();
-    dump($pods);
+    // dump($pods);
+
+    $nodes = $client->nodes()->setLabelSelector([
+        'name' => 'prophz-sajo',
+    ]);
+    dump($nodes);
 });
 
