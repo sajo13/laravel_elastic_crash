@@ -43,6 +43,9 @@ Route::get('/client-connect', function() {
     $nodes = $client->nodes()->setLabelSelector([
         'name' => 'prophz-sajo',
     ]);
-    dump($nodes);
+    // dump($nodes);
+
+    $jobs = $client->jobs()->find();
+    dump($jobs);
 });
 
