@@ -20,5 +20,13 @@ Route::get('/client-connect', function() {
         'name'    => 'test',
         'version' => 'a',
     ])->find();
+    // dump($pods);
+
+    // Find pods by field selector
+    $pods = $client->pods()->setFieldSelector([
+        'metadata.name' => 'test',
+    ])->find();
     dump($pods);
+
 });
+
