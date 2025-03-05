@@ -26,7 +26,12 @@ Route::get('/client-connect', function() {
     $pods = $client->pods()->setFieldSelector([
         'metadata.name' => 'test',
     ])->find();
-    dump($pods);
+    // dump($pods);
 
+    
+    $pod = $client->pods()->setLabelSelector([
+        'name' => 'nginx-deployment-585449566-6kt9r',
+    ]);
+    dump($pod);
 });
 
