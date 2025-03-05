@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Maclof\Kubernetes\Client;
 use GuzzleHttp\Client as GuzzleClient;
+use Maclof\Kubernetes\Models\Job;
 
 Route::get('/client-connect', function() {
 
@@ -46,6 +47,28 @@ Route::get('/client-connect', function() {
     // dump($nodes);
 
     $jobs = $client->jobs()->find();
+
+
+    $jobModel = new Job([
+        'metadata' => [
+            'name' => 'example-job',
+        ],
+        'spec' => [
+            'template' => [
+                'spec' => [
+                    'containers' => [
+                        [
+                            'name' => 'example-container',
+                            'image' => 'nginx',
+                        ],
+                    ],
+                    'restartPolicy' => 'Never',
+                ],
+            ],
+        ],
+    ]);
+
+    $jobs = $client->jobs()->create($jobModel);
     dump($jobs);
 });
 
