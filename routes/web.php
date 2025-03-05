@@ -69,6 +69,14 @@ Route::get('/client-connect', function() {
     ]);
 
     $jobs = $client->jobs()->create($jobModel);
-    dump($jobs);
+    // dd($jobs);
+
+    // Fetch the existing job
+    $jobName = 'example-job';
+    $job = $client->jobs()->find([ 'name' => $jobName]);
+
+    // dd($job[0]);
+    $job = $client->jobs()->delete($job[0]);
+    dump($job);
 });
 
