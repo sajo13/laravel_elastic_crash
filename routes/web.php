@@ -195,3 +195,19 @@ Route::get('/job-delete', function() {
     $job = $client->jobs()->delete($job[0]);
     dump($job);
 });
+
+Route::get('/job-list-first', function() {
+
+    $httpClient = new GuzzleClient([
+        'verify' => false,
+    ]);
+    $client = new Client([
+        'master' => 'https://172.30.49.52:6443',
+        'token' => env('token')
+    ], null, $httpClient);
+
+    // Fetch the existing job
+    $first_job = $client->jobs()->find()->first();
+
+    dump($first_job);
+});
