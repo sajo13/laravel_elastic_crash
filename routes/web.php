@@ -174,3 +174,24 @@ Route::get('/job-patch', function() {
 
     dd($response['status']);
 });
+
+/**
+ * Delete a model by name.
+ */
+Route::get('/job-delete', function() {
+
+    $httpClient = new GuzzleClient([
+        'verify' => false,
+    ]);
+    $client = new Client([
+        'master' => 'https://172.30.49.52:6443',
+        'token' => env('token')
+    ], null, $httpClient);
+
+    // Fetch the existing job
+    $jobName = 'example-job1';
+    $job = $client->jobs()->find(['name' => $jobName]);
+
+    $job = $client->jobs()->delete($job[0]);
+    dump($job);
+});
