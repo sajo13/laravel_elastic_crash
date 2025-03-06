@@ -227,3 +227,19 @@ Route::get('/job-exist-check', function() {
 
     dump($exist);
 });
+
+Route::get('/job-list', function() {
+
+    $httpClient = new GuzzleClient([
+        'verify' => false,
+    ]);
+    $client = new Client([
+        'master' => 'https://172.30.49.52:6443',
+        'token' => env('token')
+    ], null, $httpClient);
+
+    $jobs = $client->jobs()->find();
+    foreach($jobs as $job) {
+        dump($job->getMetadata('name'));
+    }
+});
