@@ -211,3 +211,19 @@ Route::get('/job-list-first', function() {
 
     dump($first_job);
 });
+
+Route::get('/job-exist-check', function() {
+
+    $httpClient = new GuzzleClient([
+        'verify' => false,
+    ]);
+    $client = new Client([
+        'master' => 'https://172.30.49.52:6443',
+        'token' => env('token')
+    ], null, $httpClient);
+
+    // Fetch the existing job
+    $exist = $client->jobs()->exists('example_job4');
+
+    dump($exist);
+});
