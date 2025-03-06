@@ -126,3 +126,51 @@ Route::get('/job-update', function() {
 
     dd($response['status']);
 });
+
+
+Route::get('/job-patch', function() {
+
+    $httpClient = new GuzzleClient([
+        'verify' => false,
+    ]);
+    $client = new Client([
+        'master' => 'https://172.30.49.52:6443',
+        'token' => env('token')
+    ], null, $httpClient);
+
+    $jobModel = new Job([
+        'metadata' => [
+            'name' => 'example-job',
+        ],
+        'spec' => [
+            'selector' => [
+                'matchLabels' => [
+                    'controller-uid' => '5f528320-04f2-448a-b51f-3cd189f2d84c',
+                ],
+            ],
+            'template' => [
+                'metadata' => [
+                    'labels' => [
+                        'controller-uid' => '5f528320-04f2-448a-b51f-3cd189f2d84c',
+                        'job-name' => 'example-job',
+                    ],
+                ],
+                'spec' => [
+                    'containers' => [
+                        [
+                            'name' => 'example-container',
+                            'image' => 'nginx',
+                        ],
+                    ],
+                    'restartPolicy' => 'Never'
+                ],
+            ]
+        ],
+    ]);
+    
+
+    // Now update the job using the update function
+    $response = $client->jobs()->patch($jobModel);
+
+    dd($response['status']);
+});
