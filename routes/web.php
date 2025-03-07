@@ -5,6 +5,7 @@ use Maclof\Kubernetes\Client;
 use GuzzleHttp\Client as GuzzleClient;
 use Maclof\Kubernetes\Models\Job;
 use App\Http\Controllers\NodeController;
+use App\Http\Controllers\NamespaceController;
 
 Route::get('/client-connect', function() {
 
@@ -250,3 +251,6 @@ Route::get('/node-exist', [NodeController::class, 'exist']);
 Route::get('/node-create', [NodeController::class, 'create']);
 Route::get('/node-patch', [NodeController::class, 'patch']);
 Route::get('/node-delete', [NodeController::class, 'delete']);
+
+Route::get('/namespace-list', [NamespaceController::class, 'index']);
+Route::get('/namespace-exist', [NamespaceController::class, 'exist']);
