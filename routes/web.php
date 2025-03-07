@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Maclof\Kubernetes\Client;
 use GuzzleHttp\Client as GuzzleClient;
 use Maclof\Kubernetes\Models\Job;
+use App\Http\Controllers\NodeController;
 
 Route::get('/client-connect', function() {
 
@@ -243,3 +244,7 @@ Route::get('/job-list', function() {
         dump($job->getMetadata('name'));
     }
 });
+
+Route::get('/nodes-list', [NodeController::class, 'index']);
+Route::get('/node-exist', [NodeController::class, 'exist']);
+Route::get('/node-create', [NodeController::class, 'create']);
