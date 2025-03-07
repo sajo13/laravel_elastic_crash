@@ -70,4 +70,15 @@ class NodeController extends Controller
         $node = $client->nodes()->patch($nodeModel);
         dump($node);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $nodeName = 'first-node';
+        $nodeModel = $client->nodes()->find([ 'name' => $nodeName]);
+
+        $node = $client->nodes()->delete($nodeModel[0]);
+        dump($node);
+    }
 }
