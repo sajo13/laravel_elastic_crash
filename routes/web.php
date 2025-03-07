@@ -254,3 +254,5 @@ Route::get('/node-delete', [NodeController::class, 'delete']);
 
 Route::get('/namespace-list', [NamespaceController::class, 'index']);
 Route::get('/namespace-exist', [NamespaceController::class, 'exist']);
+Route::get('/namespace-create', [NamespaceController::class, 'create']);
+Route::get('/namespace-delete', [NamespaceController::class, 'delete']);
