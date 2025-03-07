@@ -248,3 +248,4 @@ Route::get('/job-list', function() {
 Route::get('/nodes-list', [NodeController::class, 'index']);
 Route::get('/node-exist', [NodeController::class, 'exist']);
 Route::get('/node-create', [NodeController::class, 'create']);
+Route::get('/node-patch', [NodeController::class, 'patch']);

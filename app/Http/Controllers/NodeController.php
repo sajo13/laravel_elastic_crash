@@ -15,9 +15,9 @@ class NodeController extends Controller
     {
         $client = $this->initializeApiClient();
 
-        $jobs = $client->nodes()->find();
-        foreach($jobs as $job) {
-            dump($job->getMetadata('name'));
+        $nodes = $client->nodes()->find();
+        foreach($nodes as $node) {
+            dump($node->getMetadata('name'));
         }
     }
 
@@ -44,6 +44,30 @@ class NodeController extends Controller
                 ]
         ]);
         $node = $client->nodes()->create($nodeModel);
+        dump($node);
+    }
+
+    public Function patch() 
+    {
+        $client = $this->initializeApiClient();
+
+        $nodeModel = new Node([
+            "kind" => "Node",
+            "apiVersion"=> "v1",
+            "metadata"=> [
+                "name"=> "first-node",
+                "labels"=> [
+                    "name"=> "my-first-k8s-node-update"
+                ],
+                "annotations" => [
+                    "node.alpha.kubernetes.io/ttl" => "1"
+                ]             
+            ],
+            "spec" => [
+                "podCIDRs" => [""]
+            ]
+        ]);
+        $node = $client->nodes()->patch($nodeModel);
         dump($node);
     }
 }
