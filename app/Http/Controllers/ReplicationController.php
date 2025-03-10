@@ -71,4 +71,42 @@ class ReplicationController extends Controller
         $replica = $client->replicationControllers()->create($replicationControllerSpec);
         dump($replica);
     }
+
+    public Function update() 
+    {
+        $client = $this->initializeApiClient();
+
+        $update = new RepController([
+            'metadata' => [
+                'name' => 'laravel-replicationcontroller',
+                'labels' => [
+                    'app' => 'laravel',
+                ],
+            ],
+            'spec' => [
+                'replicas' => 4,
+                'selector' => [
+                    'app' => 'laravel',
+                ],
+                'template' => [
+                    'metadata' => [
+                        'labels' => [
+                            'app' => 'laravel',
+                        ],
+                    ],
+                    'spec' => [
+                        'containers' => [
+                            [
+                                'name' => 'laravelapp',
+                                'image' => 'laravel_elastic_crash_laravelapp:old',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+        
+        $replicaSet = $client->replicationControllers()->patch($update);
+        dump($replicaSet);
+    }
 }
