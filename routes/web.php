@@ -267,3 +267,4 @@ Route::get('/pod-update', [PodController::class, 'update']);
 Route::get('/pod-delete', [PodController::class, 'delete']);
 
 Route::get('/replicaset-list', [ReplicasetController::class, 'index']);
+Route::get('/replicaset-exist', [ReplicasetController::class, 'exist']);
