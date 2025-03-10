@@ -26,4 +26,49 @@ class ReplicationController extends Controller
         $exist = $client->replicaSets()->exists('test-replication');
         dump($exist);
     }
+
+    public Function create() 
+    {
+        $client = $this->initializeApiClient();
+
+        $replicationControllerSpec = new RepController([
+            'apiVersion' => 'v1',
+            'kind' => 'ReplicationController',
+            'metadata' => [
+                'name' => 'laravel-replicationcontroller',
+                'labels' => [
+                    'app' => 'laravel',
+                ],
+            ],
+            'spec' => [
+                'replicas' => 3,
+                'selector' => [
+                    'app' => 'laravel',
+                ],
+                'template' => [
+                    'metadata' => [
+                        'labels' => [
+                            'app' => 'laravel',
+                        ],
+                    ],
+                    'spec' => [
+                        'containers' => [
+                            [
+                                'name' => 'laravelapp',
+                                'image' => 'laravel_elastic_crash_laravelapp:latest',
+                                'ports' => [
+                                    [
+                                        'containerPort' => 8000,
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+        
+        $replica = $client->replicationControllers()->create($replicationControllerSpec);
+        dump($replica);
+    }
 }

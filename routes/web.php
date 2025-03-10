@@ -274,3 +274,4 @@ Route::get('/replicaset-delete', [ReplicasetController::class, 'delete']);
 
 Route::get('/replication-list', [ReplicationController::class, 'index']);
 Route::get('/replication-exist', [ReplicationController::class, 'exist']);
+Route::get('/replication-create', [ReplicationController::class, 'create']);
