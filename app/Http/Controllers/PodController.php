@@ -16,6 +16,7 @@ class PodController extends Controller
         $client = $this->initializeApiClient();
 
         $pods = $client->pods()->find();
+        dd($pods[9]);
         foreach($pods as $pod) {
             dump($pod->getMetadata('name'));
         }
@@ -55,6 +56,28 @@ class PodController extends Controller
         ]);
         
         $pod = $client->pods()->create($pod);
+        dump($pod);
+    }
+
+    public Function update() 
+    {
+        $client = $this->initializeApiClient();
+
+        $updatePod = new Pod([
+            'metadata' => [
+                'name' => 'laravel-app-pod',
+            ],
+            'spec' => [
+                'containers' => [
+                    [
+                        'name' => 'laravelapp',
+                        'image' => 'laravel_elastic_crash_laravelapp:old',
+                    ]
+                ]
+            ]
+        ]);
+
+        $pod = $client->pods()->patch($updatePod);
         dump($pod);
     }
 }
