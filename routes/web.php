@@ -273,3 +273,4 @@ Route::get('/replicaset-update', [ReplicasetController::class, 'update']);
 Route::get('/replicaset-delete', [ReplicasetController::class, 'delete']);
 
 Route::get('/replication-list', [ReplicationController::class, 'index']);
+Route::get('/replication-exist', [ReplicationController::class, 'exist']);

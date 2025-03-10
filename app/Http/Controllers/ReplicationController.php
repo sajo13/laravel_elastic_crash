@@ -19,4 +19,11 @@ class ReplicationController extends Controller
             dump($replicaSet->getMetadata('name'));
         }
     }
+
+    public function exist()
+    {
+        $client = $this->initializeApiClient();
+        $exist = $client->replicaSets()->exists('test-replication');
+        dump($exist);
+    }
 }
