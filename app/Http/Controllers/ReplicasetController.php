@@ -73,4 +73,44 @@ class ReplicasetController extends Controller
         $replicaSet = $client->replicaSets()->create($replicaSetSpec);
         dump($replicaSet);
     }
+
+    public Function update() 
+    {
+        $client = $this->initializeApiClient();
+
+        $replicaSetSpec = new ReplicaSet([
+            'metadata' => [
+                'name' => 'laravel-replicaset',
+                'labels' => [
+                    'app' => 'laravel',
+                ],
+            ],
+            'spec' => [
+                'replicas' => 4,
+                'selector' => [
+                    'matchLabels' => [
+                        'app' => 'laravel',
+                    ],
+                ],
+                'template' => [
+                    'metadata' => [
+                        'labels' => [
+                            'app' => 'laravel',
+                        ],
+                    ],
+                    'spec' => [
+                        'containers' => [
+                            [
+                                'name' => 'laravelapp',
+                                'image' => 'laravel_elastic_crash_laravelapp:old',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+        
+        $replicaSet = $client->replicaSets()->patch($replicaSetSpec);
+        dump($replicaSet);
+    }
 }
