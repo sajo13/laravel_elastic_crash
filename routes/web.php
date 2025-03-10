@@ -6,6 +6,8 @@ use GuzzleHttp\Client as GuzzleClient;
 use Maclof\Kubernetes\Models\Job;
 use App\Http\Controllers\NodeController;
 use App\Http\Controllers\NamespaceController;
+use App\Http\Controllers\PodController;
+
 
 Route::get('/client-connect', function() {
 
@@ -256,3 +258,5 @@ Route::get('/namespace-list', [NamespaceController::class, 'index']);
 Route::get('/namespace-exist', [NamespaceController::class, 'exist']);
 Route::get('/namespace-create', [NamespaceController::class, 'create']);
 Route::get('/namespace-delete', [NamespaceController::class, 'delete']);
+
+Route::get('/pod-list', [PodController::class, 'index']);
