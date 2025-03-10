@@ -28,4 +28,33 @@ class PodController extends Controller
 
         dump($exist);
     }
+
+    public Function create() 
+    {
+        $client = $this->initializeApiClient();
+
+        $pod = new Pod([
+            'apiVersion' => 'v1',
+            'kind' => 'Pod',
+            'metadata' => [
+                'name' => 'laravel-app-pod',
+            ],
+            'spec' => [
+                'containers' => [
+                    [
+                        'name' => 'laravelapp',
+                        'image' => 'laravel_elastic_crash_laravelapp:latest',
+                        'ports' => [
+                            [
+                                'containerPort' => 8000
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]);
+        
+        $pod = $client->pods()->create($pod);
+        dump($pod);
+    }
 }
