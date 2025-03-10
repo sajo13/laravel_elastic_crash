@@ -7,6 +7,7 @@ use Maclof\Kubernetes\Models\Job;
 use App\Http\Controllers\NodeController;
 use App\Http\Controllers\NamespaceController;
 use App\Http\Controllers\PodController;
+use App\Http\Controllers\ReplicasetController;
 
 
 Route::get('/client-connect', function() {
@@ -264,3 +265,5 @@ Route::get('/pod-exist', [PodController::class, 'exist']);
 Route::get('/pod-create', [PodController::class, 'create']);
 Route::get('/pod-update', [PodController::class, 'update']);
 Route::get('/pod-delete', [PodController::class, 'delete']);
+
+Route::get('/replicaset-list', [ReplicasetController::class, 'index']);
