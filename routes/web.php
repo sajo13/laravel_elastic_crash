@@ -260,3 +260,4 @@ Route::get('/namespace-create', [NamespaceController::class, 'create']);
 Route::get('/namespace-delete', [NamespaceController::class, 'delete']);
 
 Route::get('/pod-list', [PodController::class, 'index']);
+Route::get('/pod-exist', [PodController::class, 'exist']);

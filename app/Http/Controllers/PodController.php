@@ -20,4 +20,12 @@ class PodController extends Controller
             dump($pod->getMetadata('name'));
         }
     }
+
+    public function exist()
+    {
+        $client = $this->initializeApiClient();
+        $exist = $client->pods()->exists('example-job2-dj7js');
+
+        dump($exist);
+    }
 }
