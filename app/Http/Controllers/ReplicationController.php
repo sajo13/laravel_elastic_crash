@@ -109,4 +109,14 @@ class ReplicationController extends Controller
         $replicaSet = $client->replicationControllers()->patch($update);
         dump($replicaSet);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'laravel-replicationcontroller';
+        $replicationControllers = $client->replicationControllers()->find([ 'name' => $name]);
+        $result = $client->replicationControllers()->delete($replicationControllers[0]);
+        dump($result);
+    }
 }
