@@ -26,4 +26,51 @@ class ReplicasetController extends Controller
         $exist = $client->replicaSets()->exists('nginx-deployment-585449566');
         dump($exist);
     }
+
+    public Function create() 
+    {
+        $client = $this->initializeApiClient();
+
+        $replicaSetSpec = new ReplicaSet([
+            'apiVersion' => 'apps/v1',
+            'kind' => 'ReplicaSet',
+            'metadata' => [
+                'name' => 'laravel-replicaset',
+                'labels' => [
+                    'app' => 'laravel',
+                ],
+            ],
+            'spec' => [
+                'replicas' => 3,
+                'selector' => [
+                    'matchLabels' => [
+                        'app' => 'laravel',
+                    ],
+                ],
+                'template' => [
+                    'metadata' => [
+                        'labels' => [
+                            'app' => 'laravel',
+                        ],
+                    ],
+                    'spec' => [
+                        'containers' => [
+                            [
+                                'name' => 'laravelapp',
+                                'image' => 'laravel_elastic_crash_laravelapp:latest',
+                                'ports' => [
+                                    [
+                                        'containerPort' => 8000,
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+        
+        $replicaSet = $client->replicaSets()->create($replicaSetSpec);
+        dump($replicaSet);
+    }
 }
