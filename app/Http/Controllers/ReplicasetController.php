@@ -113,4 +113,14 @@ class ReplicasetController extends Controller
         $replicaSet = $client->replicaSets()->patch($replicaSetSpec);
         dump($replicaSet);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'laravel-replicaset';
+        $namespaceModel = $client->replicaSets()->find([ 'name' => $name]);
+        $namespace = $client->replicaSets()->delete($namespaceModel[1]);
+        dump($namespace['status']);
+    }
 }
