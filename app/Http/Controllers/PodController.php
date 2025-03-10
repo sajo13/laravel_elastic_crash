@@ -80,4 +80,14 @@ class PodController extends Controller
         $pod = $client->pods()->patch($updatePod);
         dump($pod);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'laravel-app-pod';
+        $namespaceModel = $client->pods()->find([ 'name' => $name]);
+        $namespace = $client->pods()->delete($namespaceModel[9]);
+        dump($namespace);
+    }
 }
