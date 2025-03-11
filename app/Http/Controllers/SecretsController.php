@@ -26,4 +26,40 @@ class SecretsController extends Controller
         $exist = $client->secrets()->exists('default-token-trplz');
         dump($exist);
     }
+
+    public Function create() 
+    {
+        $client = $this->initializeApiClient();
+
+        $secret = new Secret([
+            'apiVersion' => 'v1',
+            'kind' => 'Secret',
+            'metadata' => [
+                'name' => 'dotfile-secret',
+            ],
+            'data' => [
+                '.secret-file' => 'dmFsdWUtMg0KDQo='
+            ],
+        ]);        
+        
+        $secret = $client->secrets()->create($secret);
+        dump($secret);
+    }
+
+    public Function update() 
+    {
+        $client = $this->initializeApiClient();
+
+        $secret = new Secret([
+            'metadata' => [
+                'name' => 'dotfile-secret',
+            ],
+            'data' => [
+                '.secret-file' => 'dtest123456='
+            ],
+        ]);        
+        
+        $secret = $client->secrets()->patch($secret);
+        dump($secret);
+    }
 }
