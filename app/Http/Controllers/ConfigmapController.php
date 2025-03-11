@@ -26,4 +26,42 @@ class ConfigmapController extends Controller
         $exist = $client->configMaps()->exists('kube-root-ca.crt');
         dump($exist);
     }
+
+    public Function create() 
+    {
+        $client = $this->initializeApiClient();
+
+        $ConfigMap = new ConfigMap([
+            'apiVersion' => 'v1',
+            'kind' => 'ConfigMap',
+            'metadata' => [
+                'name' => 'game-demo',
+            ],
+            'data' => [
+                'player_initial_lives' =>  '3',
+                'ui_properties_file_name' => 'user-interface.properties'
+            ]
+        ]);        
+        
+        $ConfigMap = $client->configMaps()->create($ConfigMap);
+        dump($ConfigMap);
+    }
+
+    public Function update() 
+    {
+        $client = $this->initializeApiClient();
+
+        $ConfigMap = new ConfigMap([
+            'metadata' => [
+                'name' => 'game-demo',
+            ],
+            'data' => [
+                'player_initial_lives' =>  '5',
+                'ui_properties_file_name' => 'user-interface.properties2'
+            ]
+        ]);        
+        
+        $ConfigMap = $client->configMaps()->patch($ConfigMap);
+        dump($ConfigMap);
+    }
 }

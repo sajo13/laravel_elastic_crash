@@ -302,3 +302,5 @@ Route::get('/event-delete', [EventController::class, 'delete']);
 
 Route::get('/configmap-list', [ConfigmapController::class, 'index']);
 Route::get('/configmap-exist', [ConfigmapController::class, 'exist']);
+Route::get('/configmap-create', [ConfigmapController::class, 'create']);
+Route::get('/configmap-update', [ConfigmapController::class, 'update']);
