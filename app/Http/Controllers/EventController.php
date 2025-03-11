@@ -69,4 +69,14 @@ class EventController extends Controller
         $service = $client->events()->patch($service);
         dump($service);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'nginx-1-event';
+        $events = $client->events()->find([ 'name' => $name]);
+        $result = $client->events()->delete($events[0]);
+        dump($result);
+    }
 }
