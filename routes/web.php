@@ -12,6 +12,7 @@ use App\Http\Controllers\ReplicationController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SecretsController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ConfigmapController;
 
 Route::get('/client-connect', function() {
 
@@ -298,3 +299,6 @@ Route::get('/event-exist', [EventController::class, 'exist']);
 Route::get('/event-create', [EventController::class, 'create']);
 Route::get('/event-update', [EventController::class, 'update']);
 Route::get('/event-delete', [EventController::class, 'delete']);
+
+Route::get('/configmap-list', [ConfigmapController::class, 'index']);
+Route::get('/configmap-exist', [ConfigmapController::class, 'exist']);
