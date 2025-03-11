@@ -84,4 +84,14 @@ class ServiceController extends Controller
         $service = $client->services()->patch($service);
         dump($service);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'db-server';
+        $service = $client->services()->find([ 'name' => $name]);
+        $result = $client->services()->delete($service[2]);
+        dump($result);
+    }
 }

@@ -283,3 +283,4 @@ Route::get('/service-list', [ServiceController::class, 'index']);
 Route::get('/service-exist', [ServiceController::class, 'exist']);
 Route::get('/service-create', [ServiceController::class, 'create']);
 Route::get('/service-update', [ServiceController::class, 'update']);
+Route::get('/service-delete', [ServiceController::class, 'delete']);
