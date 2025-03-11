@@ -10,6 +10,7 @@ use App\Http\Controllers\PodController;
 use App\Http\Controllers\ReplicasetController;
 use App\Http\Controllers\ReplicationController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SecretsController;
 
 Route::get('/client-connect', function() {
 
@@ -284,3 +285,6 @@ Route::get('/service-exist', [ServiceController::class, 'exist']);
 Route::get('/service-create', [ServiceController::class, 'create']);
 Route::get('/service-update', [ServiceController::class, 'update']);
 Route::get('/service-delete', [ServiceController::class, 'delete']);
+
+Route::get('/secret-list', [SecretsController::class, 'index']);
+Route::get('/secret-exist', [SecretsController::class, 'exist']);
