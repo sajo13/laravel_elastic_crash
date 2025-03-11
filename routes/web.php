@@ -290,3 +290,4 @@ Route::get('/secret-list', [SecretsController::class, 'index']);
 Route::get('/secret-exist', [SecretsController::class, 'exist']);
 Route::get('/secret-create', [SecretsController::class, 'create']);
 Route::get('/secret-update', [SecretsController::class, 'update']);
+Route::get('/secret-delete', [SecretsController::class, 'delete']);

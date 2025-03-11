@@ -62,4 +62,14 @@ class SecretsController extends Controller
         $secret = $client->secrets()->patch($secret);
         dump($secret);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'dotfile-secret';
+        $service = $client->secrets()->find([ 'name' => $name]);
+        $result = $client->secrets()->delete($service[2]);
+        dump($result);
+    }
 }
