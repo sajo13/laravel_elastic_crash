@@ -64,4 +64,14 @@ class ConfigmapController extends Controller
         $ConfigMap = $client->configMaps()->patch($ConfigMap);
         dump($ConfigMap);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'game-demo';
+        $configMaps = $client->configMaps()->find([ 'name' => $name]);
+        $result = $client->configMaps()->delete($configMaps[1]);
+        dump($result);
+    }
 }

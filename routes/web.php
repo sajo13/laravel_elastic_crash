@@ -304,3 +304,4 @@ Route::get('/configmap-list', [ConfigmapController::class, 'index']);
 Route::get('/configmap-exist', [ConfigmapController::class, 'exist']);
 Route::get('/configmap-create', [ConfigmapController::class, 'create']);
 Route::get('/configmap-update', [ConfigmapController::class, 'update']);
+Route::get('/configmap-delete', [ConfigmapController::class, 'delete']);
