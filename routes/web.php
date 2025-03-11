@@ -11,6 +11,7 @@ use App\Http\Controllers\ReplicasetController;
 use App\Http\Controllers\ReplicationController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SecretsController;
+use App\Http\Controllers\EventController;
 
 Route::get('/client-connect', function() {
 
@@ -291,3 +292,6 @@ Route::get('/secret-exist', [SecretsController::class, 'exist']);
 Route::get('/secret-create', [SecretsController::class, 'create']);
 Route::get('/secret-update', [SecretsController::class, 'update']);
 Route::get('/secret-delete', [SecretsController::class, 'delete']);
+
+Route::get('/event-list', [EventController::class, 'index']);
+Route::get('/event-exist', [EventController::class, 'exist']);
