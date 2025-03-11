@@ -295,3 +295,5 @@ Route::get('/secret-delete', [SecretsController::class, 'delete']);
 
 Route::get('/event-list', [EventController::class, 'index']);
 Route::get('/event-exist', [EventController::class, 'exist']);
+Route::get('/event-create', [EventController::class, 'create']);
+Route::get('/event-update', [EventController::class, 'update']);
