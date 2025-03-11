@@ -9,6 +9,7 @@ use App\Http\Controllers\NamespaceController;
 use App\Http\Controllers\PodController;
 use App\Http\Controllers\ReplicasetController;
 use App\Http\Controllers\ReplicationController;
+use App\Http\Controllers\ServiceController;
 
 Route::get('/client-connect', function() {
 
@@ -277,3 +278,6 @@ Route::get('/replication-exist', [ReplicationController::class, 'exist']);
 Route::get('/replication-create', [ReplicationController::class, 'create']);
 Route::get('/replication-update', [ReplicationController::class, 'update']);
 Route::get('/replication-delete', [ReplicationController::class, 'delete']);
+
+Route::get('/service-list', [ServiceController::class, 'index']);
+Route::get('/service-exist', [ServiceController::class, 'exist']);
