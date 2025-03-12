@@ -309,3 +309,5 @@ Route::get('/configmap-delete', [ConfigmapController::class, 'delete']);
 
 Route::get('/endpoint-list', [EndpointController::class, 'index']);
 Route::get('/endpoint-exist', [EndpointController::class, 'exist']);
+Route::get('/endpoint-create', [EndpointController::class, 'create']);
+Route::get('/endpoint-update', [EndpointController::class, 'update']);
