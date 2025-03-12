@@ -27,4 +27,64 @@ class PersistentvolumeController extends Controller
         $exist = $client->persistentVolume()->exists('my-persistent-volume');
         dump($exist);
     }
+
+    public Function create() 
+    {
+        $client = $this->initializeApiClient();
+
+        $persistentVolume = new PersistentVolume([
+            'apiVersion' => 'v1',
+            'kind' => 'PersistentVolume',
+            'metadata' => [
+                'name' => 'my-persistent-volume',
+            ],
+            'spec' => [
+                'capacity' => [
+                    'storage' => '5Gi',
+                ],
+                'accessModes' => [
+                    'ReadWriteOnce',
+                ],
+                'persistentVolumeReclaimPolicy' => 'Retain',
+                'storageClassName' => 'standard',
+                'hostPath' => [
+                    'path' => '/mnt/data',
+                ],
+            ],
+        ]);     
+
+        $persistentVolume = $client->persistentVolume()->create($persistentVolume);
+        dump($persistentVolume);
+    }
+
+    public Function update() 
+    {
+        $client = $this->initializeApiClient();
+
+        $persistentVolume = new PersistentVolume([
+            'metadata' => [
+                'name' => 'my-persistent-volume',
+            ],
+            'spec' => [
+                'accessModes' => [
+                    'ReadWriteMany',
+                ],
+                'persistentVolumeReclaimPolicy' => 'Delete',
+            ],
+        ]);     
+
+        $persistentVolume = $client->persistentVolume()->patch($persistentVolume);
+        dump($persistentVolume);
+    }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'my-persistent-volume';
+        $endpoint = $client->persistentVolume()->find([ 'name' => $name]);
+        
+        $result = $client->persistentVolume()->delete($endpoint[0]);
+        dump($result);
+    }
 }

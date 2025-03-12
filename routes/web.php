@@ -323,3 +323,6 @@ Route::get('/serviceaccount-delete', [ServiceaccountController::class, 'delete']
 
 Route::get('/persistentvolume-list', [PersistentvolumeController::class, 'index']);
 Route::get('/persistentvolume-exist', [PersistentvolumeController::class, 'exist']);
+Route::get('/persistentvolume-create', [PersistentvolumeController::class, 'create']);
+Route::get('/persistentvolume-update', [PersistentvolumeController::class, 'update']);
+Route::get('/persistentvolume-delete', [PersistentvolumeController::class, 'delete']);
