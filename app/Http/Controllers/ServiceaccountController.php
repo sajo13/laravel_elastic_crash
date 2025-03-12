@@ -27,4 +27,42 @@ class ServiceaccountController extends Controller
         $exist = $client->serviceAccounts()->exists('my-service-account');
         dump($exist);
     }
+
+    public Function create() 
+    {
+        $client = $this->initializeApiClient();
+
+        $endpoint = new ServiceAccount([
+            'apiVersion' => 'v1',
+            'kind' => 'ServiceAccount',
+            'metadata' => [
+                'annotations' => [
+                    'kubernetes.io/enforce-mountable-secrets' => "true"
+                ],
+                'name' => 'my-serviceaccount',
+                'namespace' => 'default'
+            ],
+        ]);     
+        
+        $endpoint = $client->serviceAccounts()->create($endpoint);
+        dump($endpoint);
+    }
+
+    public Function update() 
+    {
+        $client = $this->initializeApiClient();
+
+        $endpoint = new ServiceAccount([
+            'metadata' => [
+                'annotations' => [
+                    'kubernetes.io/enforce-mountable-secrets' => "false"
+                ],
+                'name' => 'my-serviceaccount',
+                'namespace' => 'default'
+            ],
+        ]);     
+        
+        $endpoint = $client->serviceAccounts()->patch($endpoint);
+        dump($endpoint);
+    }
 }
