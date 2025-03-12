@@ -311,3 +311,4 @@ Route::get('/endpoint-list', [EndpointController::class, 'index']);
 Route::get('/endpoint-exist', [EndpointController::class, 'exist']);
 Route::get('/endpoint-create', [EndpointController::class, 'create']);
 Route::get('/endpoint-update', [EndpointController::class, 'update']);
+Route::get('/endpoint-delete', [EndpointController::class, 'delete']);

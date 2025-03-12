@@ -79,4 +79,15 @@ class EndpointController extends Controller
         $endpoint = $client->endpoints()->patch($endpoint);
         dump($endpoint);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'nginx-1-endpoint';
+        $endpoint = $client->endpoints()->find([ 'name' => $name]);
+        
+        $result = $client->endpoints()->delete($endpoint[2]);
+        dump($result);
+    }
 }
