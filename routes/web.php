@@ -15,6 +15,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ConfigmapController;
 use App\Http\Controllers\EndpointController;
 use App\Http\Controllers\ServiceaccountController;
+use App\Http\Controllers\PersistentvolumeController;
 
 Route::get('/client-connect', function() {
 
@@ -319,3 +320,6 @@ Route::get('/serviceaccount-exist', [ServiceaccountController::class, 'exist']);
 Route::get('/serviceaccount-create', [ServiceaccountController::class, 'create']);
 Route::get('/serviceaccount-update', [ServiceaccountController::class, 'update']);
 Route::get('/serviceaccount-delete', [ServiceaccountController::class, 'delete']);
+
+Route::get('/persistentvolume-list', [PersistentvolumeController::class, 'index']);
+Route::get('/persistentvolume-exist', [PersistentvolumeController::class, 'exist']);
