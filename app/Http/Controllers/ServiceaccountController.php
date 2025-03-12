@@ -65,4 +65,15 @@ class ServiceaccountController extends Controller
         $endpoint = $client->serviceAccounts()->patch($endpoint);
         dump($endpoint);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'my-serviceaccount';
+        $endpoint = $client->serviceAccounts()->find([ 'name' => $name]);
+
+        $result = $client->serviceAccounts()->delete($endpoint[2]);
+        dump($result);
+    }
 }

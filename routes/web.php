@@ -318,3 +318,4 @@ Route::get('/serviceaccount-list', [ServiceaccountController::class, 'index']);
 Route::get('/serviceaccount-exist', [ServiceaccountController::class, 'exist']);
 Route::get('/serviceaccount-create', [ServiceaccountController::class, 'create']);
 Route::get('/serviceaccount-update', [ServiceaccountController::class, 'update']);
+Route::get('/serviceaccount-delete', [ServiceaccountController::class, 'delete']);
