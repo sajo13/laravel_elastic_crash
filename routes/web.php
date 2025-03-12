@@ -14,6 +14,7 @@ use App\Http\Controllers\SecretsController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ConfigmapController;
 use App\Http\Controllers\EndpointController;
+use App\Http\Controllers\ServiceaccountController;
 
 Route::get('/client-connect', function() {
 
@@ -312,3 +313,6 @@ Route::get('/endpoint-exist', [EndpointController::class, 'exist']);
 Route::get('/endpoint-create', [EndpointController::class, 'create']);
 Route::get('/endpoint-update', [EndpointController::class, 'update']);
 Route::get('/endpoint-delete', [EndpointController::class, 'delete']);
+
+Route::get('/serviceaccount-list', [ServiceaccountController::class, 'index']);
+Route::get('/serviceaccount-exist', [ServiceaccountController::class, 'exist']);
