@@ -351,3 +351,5 @@ Route::get('/cronjob-delete', [CronJobController::class, 'delete']);
 
 Route::get('/deploy-list', [DeployController::class, 'index']);
 Route::get('/deploy-exist', [DeployController::class, 'exist']);
+Route::get('/deploy-create', [DeployController::class, 'create']);
+Route::get('/deploy-update', [DeployController::class, 'update']);
