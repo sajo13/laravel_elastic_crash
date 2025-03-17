@@ -17,6 +17,7 @@ use App\Http\Controllers\EndpointController;
 use App\Http\Controllers\ServiceaccountController;
 use App\Http\Controllers\PersistentvolumeController;
 use App\Http\Controllers\PersistentvolumeclaimController;
+use App\Http\Controllers\JobController;
 
 Route::get('/client-connect', function() {
 
@@ -333,3 +334,6 @@ Route::get('/persistentvolumeclaim-exist', [PersistentvolumeclaimController::cla
 Route::get('/persistentvolumeclaim-create', [PersistentvolumeclaimController::class, 'create']);
 Route::get('/persistentvolumeclaim-update', [PersistentvolumeclaimController::class, 'update']);
 Route::get('/persistentvolumeclaim-delete', [PersistentvolumeclaimController::class, 'delete']);
+
+Route::get('/job-list-new', [JobController::class, 'index']);
+Route::get('/job-exist-new', [JobController::class, 'exist']);
