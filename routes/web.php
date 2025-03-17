@@ -337,3 +337,5 @@ Route::get('/persistentvolumeclaim-delete', [PersistentvolumeclaimController::cl
 
 Route::get('/job-list-new', [JobController::class, 'index']);
 Route::get('/job-exist-new', [JobController::class, 'exist']);
+Route::get('/job-create-new', [JobController::class, 'create']);
+Route::get('/job-update-new', [JobController::class, 'update']);
