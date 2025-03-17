@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Traits\KubernatesAPiClient;
-use Maclof\Kubernetes\Models\PersistentVolume;
+use Maclof\Kubernetes\Models\PersistentVolumeClaim;
 
 class PersistentvolumeclaimController extends Controller
 {
@@ -26,5 +26,55 @@ class PersistentvolumeclaimController extends Controller
         $client = $this->initializeApiClient();
         $exist = $client->persistentVolumeClaims()->exists('my-pvc');
         dump($exist);
+    }
+
+    public function create()
+    {
+        $client = $this->initializeApiClient();
+
+        $persistentVolumeClaim = new PersistentVolumeClaim([
+            'apiVersion' => 'v1',
+            'kind' => 'PersistentVolumeClaim',
+            'metadata' => [
+                'name' => 'my-pvc',
+                'namespace' => 'default',
+            ],
+            'spec' => [
+                'accessModes' => [
+                    'ReadWriteOnce',
+                ],
+                'resources' => [
+                    'requests' => [
+                        'storage' => '2Gi',
+                    ],
+                ],
+                'storageClassName' => 'standard',
+            ],
+        ]);
+
+        $persistentVolumeClaim = $client->persistentVolumeClaims()->create($persistentVolumeClaim);
+        dump($persistentVolumeClaim);
+    }
+
+    public function update()
+    {
+        $client = $this->initializeApiClient();
+
+        $persistentVolumeClaim = new PersistentVolumeClaim([
+            'metadata' => [
+                'name' => 'my-pvc',
+                'namespace' => 'default',
+            ],
+            'spec' => [
+                'resources' => [
+                    'requests' => [
+                        'storage' => '3Gi',
+                    ],
+                ],
+            ],
+        ]);
+
+        $persistentVolumeClaim = $client->persistentVolumeClaims()->patch($persistentVolumeClaim);
+        dump($persistentVolumeClaim);
     }
 }

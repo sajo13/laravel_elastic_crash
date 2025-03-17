@@ -330,3 +330,5 @@ Route::get('/persistentvolume-delete', [PersistentvolumeController::class, 'dele
 
 Route::get('/persistentvolumeclaim-list', [PersistentvolumeclaimController::class, 'index']);
 Route::get('/persistentvolumeclaim-exist', [PersistentvolumeclaimController::class, 'exist']);
+Route::get('/persistentvolumeclaim-create', [PersistentvolumeclaimController::class, 'create']);
+Route::get('/persistentvolumeclaim-update', [PersistentvolumeclaimController::class, 'update']);
