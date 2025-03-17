@@ -77,4 +77,15 @@ class PersistentvolumeclaimController extends Controller
         $persistentVolumeClaim = $client->persistentVolumeClaims()->patch($persistentVolumeClaim);
         dump($persistentVolumeClaim);
     }
+
+    public function delete()
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'my-pvc';
+        $endpoint = $client->persistentVolumeClaims()->find([ 'name' => $name]);
+        
+        $result = $client->persistentVolumeClaims()->delete($endpoint[0]);
+        dump($result);
+    }
 }
