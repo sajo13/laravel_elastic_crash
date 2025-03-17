@@ -93,4 +93,15 @@ class CronjobController extends Controller
         $job = $client->cronJobs()->patch($job);
         dump($job);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'hello';
+        $endpoint = $client->cronJobs()->find([ 'name' => $name]);
+        
+        $result = $client->cronJobs()->delete($endpoint[0]);
+        dump($result);
+    }
 }
