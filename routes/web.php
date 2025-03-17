@@ -18,6 +18,8 @@ use App\Http\Controllers\ServiceaccountController;
 use App\Http\Controllers\PersistentvolumeController;
 use App\Http\Controllers\PersistentvolumeclaimController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\CronjobController;
+use Maclof\Kubernetes\Models\CronJob;
 
 Route::get('/client-connect', function() {
 
@@ -340,3 +342,6 @@ Route::get('/job-exist-new', [JobController::class, 'exist']);
 Route::get('/job-create-new', [JobController::class, 'create']);
 Route::get('/job-update-new', [JobController::class, 'update']);
 Route::get('/job-delete-new', [JobController::class, 'delete']);
+
+Route::get('/cronjob-list', [CronJobController::class, 'index']);
+Route::get('/cronjob-exist', [CronJobController::class, 'exist']);
