@@ -110,4 +110,15 @@ class DeployController extends Controller
         $deployments = $client->deployments()->patch($deployment);
         dump($deployments);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'phpmyadmin-deployment';
+        $endpoint = $client->deployments()->find([ 'name' => $name]);
+        
+        $result = $client->deployments()->delete($endpoint[1]);
+        dump($result);
+    }
 }

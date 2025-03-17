@@ -353,3 +353,4 @@ Route::get('/deploy-list', [DeployController::class, 'index']);
 Route::get('/deploy-exist', [DeployController::class, 'exist']);
 Route::get('/deploy-create', [DeployController::class, 'create']);
 Route::get('/deploy-update', [DeployController::class, 'update']);
+Route::get('/deploy-delete', [DeployController::class, 'delete']);
