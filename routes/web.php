@@ -345,3 +345,5 @@ Route::get('/job-delete-new', [JobController::class, 'delete']);
 
 Route::get('/cronjob-list', [CronJobController::class, 'index']);
 Route::get('/cronjob-exist', [CronJobController::class, 'exist']);
+Route::get('/cronjob-create', [CronJobController::class, 'create']);
+Route::get('/cronjob-update', [CronJobController::class, 'update']);
