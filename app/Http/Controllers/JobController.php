@@ -103,4 +103,15 @@ class JobController extends Controller
         $job = $client->jobs()->patch($job);
         dump($job);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'example-job-peer';
+        $endpoint = $client->jobs()->find([ 'name' => $name]);
+        
+        $result = $client->jobs()->delete($endpoint[4]);
+        dump($result);
+    }
 }

@@ -339,3 +339,4 @@ Route::get('/job-list-new', [JobController::class, 'index']);
 Route::get('/job-exist-new', [JobController::class, 'exist']);
 Route::get('/job-create-new', [JobController::class, 'create']);
 Route::get('/job-update-new', [JobController::class, 'update']);
+Route::get('/job-delete-new', [JobController::class, 'delete']);
