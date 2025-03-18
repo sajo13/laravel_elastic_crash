@@ -20,6 +20,7 @@ use App\Http\Controllers\PersistentvolumeclaimController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\CronjobController;
 use App\Http\Controllers\DeployController;
+use App\Http\Controllers\DeamonsetController;
 
 Route::get('/client-connect', function() {
 
@@ -354,3 +355,6 @@ Route::get('/deploy-exist', [DeployController::class, 'exist']);
 Route::get('/deploy-create', [DeployController::class, 'create']);
 Route::get('/deploy-update', [DeployController::class, 'update']);
 Route::get('/deploy-delete', [DeployController::class, 'delete']);
+
+Route::get('/deamonset-list', [DeamonsetController::class, 'index']);
+Route::get('/deamonset-exist', [DeamonsetController::class, 'exist']);
