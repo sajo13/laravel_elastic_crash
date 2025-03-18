@@ -360,3 +360,4 @@ Route::get('/deamonset-list', [DeamonsetController::class, 'index']);
 Route::get('/deamonset-exist', [DeamonsetController::class, 'exist']);
 Route::get('/deamonset-create', [DeamonsetController::class, 'create']);
 Route::get('/deamonset-update', [DeamonsetController::class, 'update']);
+Route::get('/deamonset-delete', [DeamonsetController::class, 'delete']);

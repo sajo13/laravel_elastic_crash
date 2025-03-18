@@ -113,4 +113,15 @@ class DeamonsetController extends Controller
         $daemonSet = $client->daemonSets()->patch($daemonSets);
         dump($daemonSet);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'monitoring-agent';
+        $endpoint = $client->daemonSets()->find([ 'name' => $name]);
+        
+        $result = $client->daemonSets()->delete($endpoint[0]);
+        dump($result);
+    }
 }
