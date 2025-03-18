@@ -367,3 +367,4 @@ Route::get('/ingress-list', [IngressController::class, 'index']);
 Route::get('/ingress-exist', [IngressController::class, 'exist']);
 Route::get('/ingress-create', [IngressController::class, 'create']);
 Route::get('/ingress-update', [IngressController::class, 'update']);
+Route::get('/ingress-delete', [IngressController::class, 'delete']);

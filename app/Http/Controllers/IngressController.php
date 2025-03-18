@@ -109,4 +109,15 @@ class IngressController extends Controller
         $ingress = $client->ingresses()->patch($job);
         dump($ingress);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'minimal-ingress';
+        $endpoint = $client->ingresses()->find([ 'name' => $name]);
+        
+        $result = $client->ingresses()->delete($endpoint[0]);
+        dump($result);
+    }
 }
