@@ -21,6 +21,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\CronjobController;
 use App\Http\Controllers\DeployController;
 use App\Http\Controllers\DeamonsetController;
+use App\Http\Controllers\IngressController;
 
 Route::get('/client-connect', function() {
 
@@ -361,3 +362,6 @@ Route::get('/deamonset-exist', [DeamonsetController::class, 'exist']);
 Route::get('/deamonset-create', [DeamonsetController::class, 'create']);
 Route::get('/deamonset-update', [DeamonsetController::class, 'update']);
 Route::get('/deamonset-delete', [DeamonsetController::class, 'delete']);
+
+Route::get('/ingress-list', [IngressController::class, 'index']);
+Route::get('/ingress-exist', [IngressController::class, 'exist']);
