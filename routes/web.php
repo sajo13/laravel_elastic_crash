@@ -377,3 +377,5 @@ Route::get('/autoscale-delete', [AutoscaleController::class, 'delete']);
 
 Route::get('/policy-list', [NetworkpolicyController::class, 'index']);
 Route::get('/policy-exist', [NetworkpolicyController::class, 'exist']);
+Route::get('/policy-create', [NetworkpolicyController::class, 'create']);
+Route::get('/policy-update', [NetworkpolicyController::class, 'update']);
