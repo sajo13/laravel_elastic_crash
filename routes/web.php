@@ -358,3 +358,5 @@ Route::get('/deploy-delete', [DeployController::class, 'delete']);
 
 Route::get('/deamonset-list', [DeamonsetController::class, 'index']);
 Route::get('/deamonset-exist', [DeamonsetController::class, 'exist']);
+Route::get('/deamonset-create', [DeamonsetController::class, 'create']);
+Route::get('/deamonset-update', [DeamonsetController::class, 'update']);
