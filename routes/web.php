@@ -23,6 +23,7 @@ use App\Http\Controllers\DeployController;
 use App\Http\Controllers\DeamonsetController;
 use App\Http\Controllers\IngressController;
 use App\Http\Controllers\AutoscaleController;
+use App\Http\Controllers\NetworkpolicyController;
 
 Route::get('/client-connect', function() {
 
@@ -373,3 +374,6 @@ Route::get('/ingress-delete', [IngressController::class, 'delete']);
 Route::get('/autoscale-list', [AutoscaleController::class, 'index']);
 Route::get('/autoscale-exist', [AutoscaleController::class, 'exist']);
 Route::get('/autoscale-delete', [AutoscaleController::class, 'delete']);
+
+Route::get('/policy-list', [NetworkpolicyController::class, 'index']);
+Route::get('/policy-exist', [NetworkpolicyController::class, 'exist']);
