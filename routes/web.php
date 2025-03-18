@@ -22,6 +22,7 @@ use App\Http\Controllers\CronjobController;
 use App\Http\Controllers\DeployController;
 use App\Http\Controllers\DeamonsetController;
 use App\Http\Controllers\IngressController;
+use App\Http\Controllers\AutoscaleController;
 
 Route::get('/client-connect', function() {
 
@@ -368,3 +369,6 @@ Route::get('/ingress-exist', [IngressController::class, 'exist']);
 Route::get('/ingress-create', [IngressController::class, 'create']);
 Route::get('/ingress-update', [IngressController::class, 'update']);
 Route::get('/ingress-delete', [IngressController::class, 'delete']);
+
+Route::get('/autoscale-list', [AutoscaleController::class, 'index']);
+Route::get('/autoscale-exist', [AutoscaleController::class, 'exist']);
