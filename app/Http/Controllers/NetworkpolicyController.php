@@ -140,4 +140,15 @@ class NetworkpolicyController extends Controller
         $networkPolicy = $client->networkPolicies()->patch($networkPolicy);
         dump($networkPolicy);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'test-network-policy';
+        $endpoint = $client->networkPolicies()->find([ 'name' => $name]);
+        
+        $result = $client->networkPolicies()->delete($endpoint[0]);
+        dump($result);
+    }
 }
