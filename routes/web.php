@@ -372,3 +372,4 @@ Route::get('/ingress-delete', [IngressController::class, 'delete']);
 
 Route::get('/autoscale-list', [AutoscaleController::class, 'index']);
 Route::get('/autoscale-exist', [AutoscaleController::class, 'exist']);
+Route::get('/autoscale-delete', [AutoscaleController::class, 'delete']);

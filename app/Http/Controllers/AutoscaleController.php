@@ -27,4 +27,15 @@ class AutoscaleController extends Controller
         $exist = $client->horizontalPodAutoscalers()->exists('example-autoscaler');
         dump($exist);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'example-autoscaler';
+        $auto = $client->horizontalPodAutoscalers()->find([ 'name' => $name]);
+        
+        $result = $client->horizontalPodAutoscalers()->delete($auto[0]);
+        dump($result);
+    }
 }
