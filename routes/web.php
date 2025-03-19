@@ -405,3 +405,5 @@ Route::get('/role-delete', [RoleController::class, 'delete']);
 
 Route::get('/rolebind-list', [RolebindController::class, 'index']);
 Route::get('/rolebind-exist', [RolebindController::class, 'exist']);
+Route::get('/rolebind-create', [RolebindController::class, 'create']);
+Route::get('/rolebind-update', [RolebindController::class, 'update']);
