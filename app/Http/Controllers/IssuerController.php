@@ -86,4 +86,15 @@ class IssuerController extends Controller
         $issuer = $client->issuers()->patch($issuer);
         dump($issuer);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'issuers-example';
+        $issuers = $client->cronJobs()->find([ 'name' => $name]);
+        
+        $result = $client->issuers()->delete($issuers[0]);
+        dump($result);
+    }
 }
