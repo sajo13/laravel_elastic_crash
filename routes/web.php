@@ -27,6 +27,7 @@ use App\Http\Controllers\NetworkpolicyController;
 use App\Http\Controllers\IssuerController;
 use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RolebindController;
 
 Route::get('/client-connect', function() {
 
@@ -401,3 +402,6 @@ Route::get('/role-exist', [RoleController::class, 'exist']);
 Route::get('/role-create', [RoleController::class, 'create']);
 Route::get('/role-update', [RoleController::class, 'update']);
 Route::get('/role-delete', [RoleController::class, 'delete']);
+
+Route::get('/rolebind-list', [RolebindController::class, 'index']);
+Route::get('/rolebind-exist', [RolebindController::class, 'exist']);
