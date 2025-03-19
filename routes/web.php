@@ -26,6 +26,7 @@ use App\Http\Controllers\AutoscaleController;
 use App\Http\Controllers\NetworkpolicyController;
 use App\Http\Controllers\IssuerController;
 use App\Http\Controllers\CertificatesController;
+use App\Http\Controllers\RoleController;
 
 Route::get('/client-connect', function() {
 
@@ -394,3 +395,6 @@ Route::get('/certificate-exist', [CertificatesController::class, 'exist']);
 Route::get('/certificate-create', [CertificatesController::class, 'create']);
 Route::get('/certificate-update', [CertificatesController::class, 'update']);
 Route::get('/certificate-delete', [CertificatesController::class, 'delete']);
+
+Route::get('/role-list', [RoleController::class, 'index']);
+Route::get('/role-exist', [RoleController::class, 'exist']);
