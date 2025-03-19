@@ -25,6 +25,7 @@ use App\Http\Controllers\IngressController;
 use App\Http\Controllers\AutoscaleController;
 use App\Http\Controllers\NetworkpolicyController;
 use App\Http\Controllers\IssuerController;
+use App\Http\Controllers\CertificatesController;
 
 Route::get('/client-connect', function() {
 
@@ -387,3 +388,6 @@ Route::get('/issuer-exist', [IssuerController::class, 'exist']);
 Route::get('/issuer-create', [IssuerController::class, 'create']);
 Route::get('/issuer-update', [IssuerController::class, 'update']);
 Route::get('/issuer-delete', [IssuerController::class, 'delete']);
+
+Route::get('/certificate-list', [CertificatesController::class, 'index']);
+Route::get('/certificate-exist', [CertificatesController::class, 'exist']);
