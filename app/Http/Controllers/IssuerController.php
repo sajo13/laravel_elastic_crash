@@ -27,4 +27,63 @@ class IssuerController extends Controller
         $exist = $client->issuers()->exists('example-issuer');
         dump($exist);
     }
+
+    public function create()
+    {
+        $client = $this->initializeApiClient();
+
+        $issuer = new Issuer([
+            "apiVersion" => "certmanager.k8s.io/v1alpha1",
+            "kind" => "Issuer",
+            "metadata" => [
+                "name" => "my-issuer",
+                "namespace" => "default"
+            ],
+            "spec" => [
+                "acme" => [
+                    "server" => "https://acme-v02.api.letsencrypt.org/directory",
+                    "email" => "admin@example.com",
+                    "privateKeySecretRef" => [
+                        "name" => "acme-private-key"
+                    ],
+                    "solvers" => [
+                        [
+                            "http01" => [
+                                "ingress" => [
+                                    "class" => "nginx"
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]);
+
+        $issuer = $client->issuers()->create($issuer);
+        dump($issuer);
+    }
+
+    public function update()
+    {
+        $client = $this->initializeApiClient();
+
+        $issuer = new Issuer([
+            "metadata" => [
+                "name" => "my-issuer",
+                "namespace" => "default"
+            ],
+            "spec" => [
+                "acme" => [
+                    "server" => "https://acme-v02.api.letsencrypt.org/directory",
+                    "email" => "admin123@example.com",
+                    "privateKeySecretRef" => [
+                        "name" => "acme-private-key"
+                    ]
+                ]
+            ]
+        ]);
+
+        $issuer = $client->issuers()->patch($issuer);
+        dump($issuer);
+    }
 }

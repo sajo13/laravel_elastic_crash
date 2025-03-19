@@ -384,3 +384,5 @@ Route::get('/policy-delete', [NetworkpolicyController::class, 'delete']);
 
 Route::get('/issuer-list', [IssuerController::class, 'index']);
 Route::get('/issuer-exist', [IssuerController::class, 'exist']);
+Route::get('/issuer-create', [IssuerController::class, 'create']);
+Route::get('/issuer-update', [IssuerController::class, 'update']);
