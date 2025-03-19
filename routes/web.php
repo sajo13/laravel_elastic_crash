@@ -398,3 +398,5 @@ Route::get('/certificate-delete', [CertificatesController::class, 'delete']);
 
 Route::get('/role-list', [RoleController::class, 'index']);
 Route::get('/role-exist', [RoleController::class, 'exist']);
+Route::get('/role-create', [RoleController::class, 'create']);
+Route::get('/role-update', [RoleController::class, 'update']);
