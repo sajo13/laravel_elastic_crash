@@ -24,6 +24,7 @@ use App\Http\Controllers\DeamonsetController;
 use App\Http\Controllers\IngressController;
 use App\Http\Controllers\AutoscaleController;
 use App\Http\Controllers\NetworkpolicyController;
+use App\Http\Controllers\IssuerController;
 
 Route::get('/client-connect', function() {
 
@@ -380,3 +381,6 @@ Route::get('/policy-exist', [NetworkpolicyController::class, 'exist']);
 Route::get('/policy-create', [NetworkpolicyController::class, 'create']);
 Route::get('/policy-update', [NetworkpolicyController::class, 'update']);
 Route::get('/policy-delete', [NetworkpolicyController::class, 'delete']);
+
+Route::get('/issuer-list', [IssuerController::class, 'index']);
+Route::get('/issuer-exist', [IssuerController::class, 'exist']);
