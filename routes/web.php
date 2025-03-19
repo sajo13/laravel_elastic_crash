@@ -393,3 +393,4 @@ Route::get('/certificate-list', [CertificatesController::class, 'index']);
 Route::get('/certificate-exist', [CertificatesController::class, 'exist']);
 Route::get('/certificate-create', [CertificatesController::class, 'create']);
 Route::get('/certificate-update', [CertificatesController::class, 'update']);
+Route::get('/certificate-delete', [CertificatesController::class, 'delete']);

@@ -107,4 +107,15 @@ class CertificatesController extends Controller
         $certificates = $client->certificates()->patch($certificates);
         dump($certificates);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'issuers-example';
+        $certificates = $client->certificates()->find([ 'name' => $name]);
+        
+        $result = $client->certificates()->delete($certificates[0]);
+        dump($result);
+    }
 }
