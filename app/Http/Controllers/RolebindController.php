@@ -83,4 +83,15 @@ class RolebindController extends Controller
         $rolebind = $client->roleBindings()->patch($rolebind);
         dump($rolebind);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'roleBindings';
+        $roleBindings = $client->roleBindings()->find([ 'name' => $name]);
+        
+        $result = $client->roleBindings()->delete($roleBindings[0]);
+        dump($result);
+    }
 }
