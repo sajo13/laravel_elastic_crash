@@ -73,4 +73,15 @@ class RoleController extends Controller
         $role = $client->roles()->patch($role);
         dump($role);
     }
+
+    public Function delete() 
+    {
+        $client = $this->initializeApiClient();
+
+        $name = 'pod-reader';
+        $role = $client->roles()->find([ 'name' => $name]);
+        
+        $result = $client->roles()->delete($role[0]);
+        dump($result);
+    }
 }
