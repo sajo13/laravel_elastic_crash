@@ -408,3 +408,5 @@ Route::get('/rolebind-exist', [RolebindController::class, 'exist']);
 Route::get('/rolebind-create', [RolebindController::class, 'create']);
 Route::get('/rolebind-update', [RolebindController::class, 'update']);
 Route::get('/rolebind-delete', [RolebindController::class, 'delete']);
+
+Route::get('/ingress-multiple', [IngressController::class, 'multiple']);

@@ -120,4 +120,35 @@ class IngressController extends Controller
         $result = $client->ingresses()->delete($endpoint[0]);
         dump($result);
     }
+
+    public function multiple()
+    {
+        $client = $this->initializeApiClient();
+
+        $ingreesToUpdate = [
+            [
+                'name' => 'minimal-ingress',
+                'ingressClassName' => 'nginx-test',
+            ],
+            [
+                'name' => 'minimal-ingress2',
+                'ingressClassName' => 'nginx-example2',
+            ],
+
+        ];
+
+        foreach ($ingreesToUpdate as $ingressData) {
+            $ingress = new Ingress([
+                'metadata' => [
+                    'name' => $ingressData['name'],
+                ],
+                'spec' => [
+                    'ingressClassName' => $ingressData['ingressClassName'],
+                ],
+            ]);
+
+            $ingress = $client->ingresses()->patch($ingress);
+            dump($ingress);
+        }
+    }
 }
