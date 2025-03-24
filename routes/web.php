@@ -30,7 +30,6 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolebindController;
 
 Route::get('/client-connect', function() {
-
     $httpClient = new GuzzleClient([
         'verify' => false,
     ]);
